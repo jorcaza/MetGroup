@@ -3,6 +3,8 @@ import { PostService } from '../services/post.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+// import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -51,7 +53,7 @@ export class CreateComponent implements OnInit {
   submit() {
     console.log(this.form.value);
     this.postService.create(this.form.value).subscribe((res: any) => {
-      console.log('Post created successfully!');
+      console.log('Tienda Creada  successfully!');
       this.router.navigateByUrl('metgroup/index');
     })
   }

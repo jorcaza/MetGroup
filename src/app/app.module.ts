@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 
 import { MetgroupModule } from './metgroup/metgroup.module';
 
+// import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent

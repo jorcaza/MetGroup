@@ -46,6 +46,23 @@ export class PostService {
       )
   }
 
+  update(id: any, post: any): Observable<Post> {
+    let url = this.apiURL + '/store/update' + id;
+    return this.httpClient.put<Post>(this.apiURL + '/posts/' + id, JSON.stringify(post), this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+
+  delete(post: any) {
+    let url = this.apiURL + '/store/' + post;
+    console.log(url, post);
+    return this.httpClient.delete<Post>(url, post)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
 
 
   errorHandler(error: any) {
