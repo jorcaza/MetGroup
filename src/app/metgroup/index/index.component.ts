@@ -10,7 +10,8 @@ import { Post } from "../post";
 })
 export class IndexComponent implements OnInit {
 
-  posts: Post[] = [];
+  posts: any[] = [];
+  cantidad: any[] = [];
 
   /*------------------------------------------
   --------------------------------------------
@@ -26,10 +27,18 @@ export class IndexComponent implements OnInit {
    */
   ngOnInit(): void {
     this.postService.getAll().subscribe((data: Post[]) => {
+      //console.log(data);
       this.posts = data;
-      console.log(this.posts);
+
+      // console.log(this.posts);
     })
   }
+
+
+  //   import {map} from 'rxjs/operators';
+
+
+
 
   /**
    * Write code on Method
