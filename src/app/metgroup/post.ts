@@ -11,3 +11,10 @@ export interface Post {
     // body: string;
 }
 
+
+export interface create {
+
+    name: string;
+    // body: string;
+}
+

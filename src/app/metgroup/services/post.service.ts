@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 
-import { Post } from "../post";
+import { Post, create } from "../post";
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +13,13 @@ import { Post } from "../post";
 export class PostService {
 
   private apiURL = "/posts";
+  private apiURL2 = "https://test-api-met.herokuapp.com";
 
-  // httpOptions = {
-  //   headers: new HttpHeaders({
-  //     'Content-Type': 'application/json'
-  //   })
-  // }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
 
 
   constructor(private httpClient: HttpClient) { }
@@ -34,29 +35,18 @@ export class PostService {
   }
 
 
-  //   this.apiService.getTest().pipe(
-  //   map((data: any) => {
-  //     data.Data = data.Data.map((item: any) => ({
-  //       projectName: item['Project Name'],
-  //       projectCode: item.PCode
-  //     });
-  //     return data;
-  //   })
-  // ).subscribe((data: any) => this.projects = data.Data);
 
-
-  cargarUsuarios() {
-    const url = 'https://reqres.in/api/users';
-
-    return this.httpClient.get<any>(url)
+  create(post: create): Observable<any> {
+    let url = this.apiURL + '/store/' + post.name;
+    //console.log(post);
+    //console.log(this.apiURL + '/store/', post.name);
+    return this.httpClient.post<create>(url, post.name)
       .pipe(
-        map(resp => {
-          return resp.data;
-
-        })
-      );
-
+        catchError(this.errorHandler)
+      )
   }
+
+
 
   errorHandler(error: any) {
     let errorMessage = '';
