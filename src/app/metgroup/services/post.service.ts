@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 
-import { Post, create } from "../post";
+import { Post, create, login } from "../post";
 
 @Injectable({
   providedIn: 'root'
@@ -64,6 +64,15 @@ export class PostService {
       )
   }
 
+  auth(post: any) {
+    let post2 = JSON.stringify(post);
+    let url = this.apiURL + '/auth/' + post2;
+    console.log(post2);
+    return this.httpClient.post<any>(url, post, this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
 
 
   getAllArticles(): Observable<Post[]> {

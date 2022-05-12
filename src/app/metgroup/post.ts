@@ -18,3 +18,8 @@ export interface create {
     // body: string;
 }
 
+export interface login {
+
+    username: string;
+    password: string;
+}

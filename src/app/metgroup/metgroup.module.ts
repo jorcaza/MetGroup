@@ -9,13 +9,15 @@ import { EditComponent } from './edit/edit.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticlesIndexComponent } from './articles-index/articles-index.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     IndexComponent,
     ViewComponent,
     CreateComponent,
     EditComponent,
-    ArticlesIndexComponent
+    ArticlesIndexComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
