@@ -4,13 +4,16 @@ import { IndexComponent } from './index/index.component';
 import { ViewComponent } from './view/view.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
+import { ArticlesIndexComponent } from './articles-index/articles-index.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'metgroup/index', pathMatch: 'full' },
   { path: 'metgroup', redirectTo: 'metgroup/index', pathMatch: 'full' },
   { path: 'metgroup/index', component: IndexComponent },
   { path: 'metgroup/:metgroupId/view', component: ViewComponent },
   { path: 'metgroup/create', component: CreateComponent },
-  { path: 'metgroup/:metgroupId/edit', component: EditComponent }
+  { path: 'metgroup/:metgroupId/edit', component: EditComponent },
+  { path: 'metgroup/articles', component: ArticlesIndexComponent }
 ];
 
 @NgModule({

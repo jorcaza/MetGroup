@@ -65,6 +65,17 @@ export class PostService {
   }
 
 
+
+  getAllArticles(): Observable<Post[]> {
+    return this.httpClient.get<any>(this.apiURL + '/items')
+      .pipe(
+        map(resp => {
+          return resp.items;
+
+        })
+      )
+  }
+
   errorHandler(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

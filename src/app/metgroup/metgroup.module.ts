@@ -8,12 +8,14 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ArticlesIndexComponent } from './articles-index/articles-index.component';
 @NgModule({
   declarations: [
     IndexComponent,
     ViewComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    ArticlesIndexComponent
   ],
   imports: [
     CommonModule,
