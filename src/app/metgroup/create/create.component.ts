@@ -3,7 +3,7 @@ import { PostService } from '../services/post.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create',
@@ -21,7 +21,8 @@ export class CreateComponent implements OnInit {
   --------------------------------------------*/
   constructor(
     public postService: PostService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   /**
@@ -54,6 +55,7 @@ export class CreateComponent implements OnInit {
     console.log(this.form.value);
     this.postService.create(this.form.value).subscribe((res: any) => {
       console.log('Tienda Creada  successfully!');
+      this.toastr.success('', 'Tienda Creada Exitosamente');
       this.router.navigateByUrl('metgroup/index');
     })
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from "../services/post.service";
 import { Post } from "../post";
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -21,7 +22,8 @@ export class IndexComponent implements OnInit {
   --------------------------------------------
   --------------------------------------------*/
   constructor(public postService: PostService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
   /**
    * Write code on Method
@@ -52,7 +54,8 @@ export class IndexComponent implements OnInit {
     this.postService.delete(post).subscribe(res => {
       //this.posts = this.posts.filter(item => item.id !== post);
       console.log('Tienda deleted successfully!');
-      window.location.reload();
+      this.toastr.error('', 'Tienda Eliminada ');
+      this.router.navigateByUrl('metgroup/index');
     })
   }
 
